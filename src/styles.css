@@ -1,47 +1,87 @@
+@font-face {
+    font-family: 'Flame';
+    src: url('./fonts/Flame-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: bold;
+}
+
 :root {
-    --page-background-color: rgb(82, 134, 247);
+    --page-background-color: rgb(245, 235, 220);
+    --font-color: rgb(80, 35, 20);
+    --font-size: 1.6rem;
+    --font-main: 'Flame', sans-serif;
 }
 
-body {
+body,
+header {
     background-color: var(--page-background-color);
+    font-family: var(--font-main);
 }
 
-.logo-svg{
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
+.logo-home {
+    width: 80px;
+    height: 80px;
 }
+
 .navbar {
     display: flex;
-    justify-content: space-around;
+    gap: 10rem;
     align-items: center;
+    justify-content: center;
     padding: 10px 10px;
 }
 
 .navbar button {
     background-color: inherit;
-    color: rgb(0, 0, 0);
+    color: var(--font-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 1.4rem;
-    transition: 0.3s ease-in;
+    font-size: 1.6rem;
+    font-family: var(--font-main);
 }
 
-.navbar button:hover {
-    color: white;
-}
-
-.reserve-btn {
+.display-btn {
     border-radius: 5px;
-    background-color: red !important;
+    transition: all .35s;
+}
+
+.display-btn:hover {
+    color: black;
+}
+
+.view-cart-btn {
+    border-radius: 9999px;
+    background-color: rgb(255, 0, 0) !important;
     color: white !important;
-    height: 50px;
-    width: 230px;
+    height: 60px;
+    width: 300px;
     transition: 0.2s ease !important;
     text-align: center;
 }
 
-.reserve-btn:hover {
+.view-cart-btn:hover {
     background-color: rgb(139, 32, 32) !important;
+}
+
+#content {
+    white-space: nowrap;
+    background-color: white;
+    height: 100vh;
+    padding: 40px;
+    width: 100%;
+}
+
+#content h1 {
+    font-size: 4rem;
+    color: var(--font-color);
+}
+
+#content p {
+    font-size: 1.4rem;
+}
+
+#content h1,
+p {
+    color: var(--font-color);
 }

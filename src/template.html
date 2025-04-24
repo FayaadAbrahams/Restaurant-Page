@@ -3,18 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-
+        <title>Burger King Replica!</title>
     </head>
     <body>
         <header>
             <nav class="navbar">
-                <button class="logo-homepage"><img class="logo-svg"
-                        src="./assets/logo.svg" alt="Logo-home"></button>
-                <button>Home</button>
-                <button>Menu</button>
-                <button>About</button>
-                <button class="reserve-btn">Make Reservation</button>
+                <button aria-label="Home Logo" class="logo-homepage-btn">
+                    <img class="logo-home" src="./assets/bk-logo.png">
+                </button>
+                <button class="display-btn menu-btn"
+                    aria-label="Menu button"
+                    alt="Menu Button">Menu</button>
+                <button class="display-btn about-btn"
+                    aria-label="About button">About</button>
+                <button class="view-cart-btn"
+                    aria-label="View Cart">
+                    View Cart</button>
             </nav>
         </header>
         <div id="content"></div>
