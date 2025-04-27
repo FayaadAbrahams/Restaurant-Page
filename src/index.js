@@ -20,13 +20,12 @@ function homePage() {
     <div class="main-container"> 
     <div class="main-heading-container">
     <h1>Fire up your <br>BK® order!</h1>
-       
     <button class="order-pickup-btn order">
-    <img src="./assets/motorbike.svg" class="bike-icon" alt>
+     <span class="cart-icon"></span>
     Order Pickup
     </button>
     <button class="order-pickup-btn deliver">
-    <img src="./assets/cart.svg" class="bike-icon" alt>
+         <span class="bike-icon"></span>
     Order Delivery</button>
     </div>
     <div class="banner-container">
@@ -36,16 +35,62 @@ function homePage() {
   </.div>
     `;
     contentDiv.innerHTML = homepageContent;
+
 }
 
+function openTab(evt, tabName) {
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    document.getElementById(tabName).style.display = "block";
+
+    evt.currentTarget.classList.add("active");
+}
+
+window.openTab = openTab;
 function menuPage() {
     const contentDiv = document.getElementById("content");
     const homepageContent = `
-      <h1>IMRA YOU GONNA BE FINE!!</h1>
-      <p>This content was loaded on page load using JavaScript.</p>
-        <p>We serve the best food in town!</p>
-        <p>Check out our menu for more details.</p>
+    <div class="menu-container">
+    <h2>Select Location</h2>
+    <div class="location-btn-container">
+        <button class="pickup-btn">Pick Up</button>
+        <button class="deliver-btn">Delivery</button>
+    </div>
+    <div class="address-container">
+        <input type="text" name="address-search-input"
+        class="address-search"
+        placeholder="Your address">
+        <div class="address-tab-container">
+        <button class="tablinks"
+            onclick="openTab(event, 'Nearby')">Nearby</button>
+        <button class="tablinks"
+            onclick="openTab(event, 'Favorites')">Favorites</button>
+        <button class="tablinks"
+            onclick="openTab(event, 'Recents')">Recents</button>
+        </div>
+        <div id="Nearby" class="tabcontent">
+        <p>Restaurants near you...</p>
+        </div>
+        <div id="Favorites" class="tabcontent">
+        <p>Your favorites...</p>
+        </div>
+        <div id="Recents" class="tabcontent">
+        <p>Recents...</p>
+        </div>
+    </div>
+</div>
     `;
     contentDiv.innerHTML = homepageContent;
+    document.querySelector(".tablinks").click();
 }
+
+
 

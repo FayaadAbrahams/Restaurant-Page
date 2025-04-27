@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Flame';
-    src: url('./fonts/Flame-Regular.ttf') format('truetype');
+    src: url('./assets/fonts/Flame-Regular.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
 }
@@ -9,8 +9,15 @@
     --white: rgb(245, 235, 220);
     --main-color: rgb(80, 35, 20);
     --secondary-color: rgb(214, 35, 29);
+    --secondary-hover-color: rgb(139, 32, 32);
+    --alternative-hover-color: rgb(223, 210, 200);
     --font-size: 1.6rem;
     --font-main: 'Flame', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body,
@@ -20,24 +27,24 @@ header {
 }
 
 .logo-home {
-
     width: 100%;
     height: 80px;
 }
 
 .logo-container {
-    grid-column: 1 / span 2;
+    grid-area: 1 / span 2;
     display: flex;
     justify-content: flex-start;
 }
 
 .navbar {
     display: grid;
-    grid-template-columns: repeat(9, 210px);
+    grid-template-columns: repeat(10, calc(100% / 11));
     gap: 20px;
     align-items: center;
     justify-content: center;
     padding: 10px 10px;
+    box-shadow: 0px 15px 8px -7px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -70,13 +77,13 @@ header {
     background-color: rgb(255, 0, 0) !important;
     color: white !important;
     height: 60px;
-    max-width: 300px;
     transition: 0.2s ease !important;
     text-align: center;
 }
 
-.view-cart-btn:hover {
-    background-color: rgb(139, 32, 32) !important;
+.view-cart-btn:hover,
+.order-pickup-btn.order:hover {
+    background-color: var(--secondary-hover-color) !important;
 }
 
 #content {
@@ -85,6 +92,7 @@ header {
     height: 100vh;
     padding: 40px;
     max-width: 100%;
+    padding-left: 25%;
 }
 
 #content h1 {
@@ -101,11 +109,11 @@ p {
 }
 
 .main-container {
-    padding-left: 15rem;
     display: grid;
     grid-template-columns: 44rem 60rem;
     grid-template-rows: repeat(2, 1fr);
-
+    row-gap: 20px;
+    align-content: center;
 }
 
 .banner-container {
@@ -123,8 +131,10 @@ p {
 }
 
 .food-banner {
-    width: 795px;
-    height: 398px;
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    object-fit: cover;
     border-radius: 12px;
     transition: transform 0.3s ease;
 }
@@ -168,17 +178,187 @@ p {
     border: 1px solid var(--main-color);
 }
 
+.order-pickup-btn.deliver:hover {
+    background-color: var(--alternative-hover-color);
+}
+
 .main-heading-container {
     display: grid;
     grid-template-rows: repeat(3, auto);
     gap: 8px;
-    height: 400px;
 }
 
 .cart-icon,
 .bike-icon {
     width: 20px;
     height: 20px;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(2deg) brightness(108%) contrast(105%);
     margin-right: 7px;
+}
+
+.cart-icon {
+    background-image: url('./assets/cart.svg');
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(2deg) brightness(108%) contrast(105%);
+    border: none;
+}
+
+.bike-icon {
+    background-image: url('./assets/motorbike.svg');
+    filter: brightness(0) saturate(100%) invert(10%) sepia(65%) saturate(1638%) hue-rotate(349deg) brightness(103%) contrast(90%);
+}
+
+.location-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    font-family: var(--font-main);
+}
+
+.location-btn-container button {
+    min-width: 280px;
+    height: 50px;
+    border: 1px solid #ada8a1;
+    font-family: var(--font-main);
+}
+
+.pickup-btn {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.deliver-btn {
+    background-color: white;
+    border-radius: 0px 4px 4px 0px;
+    color: var(--main-color);
+}
+
+.pickup-btn:hover,
+.deliver-btn:hover {
+    cursor: pointer;
+    border: 2px solid var(--main-color);
+
+}
+
+.address-container {
+    padding: 20px;
+    align-content: center;
+    width: 40rem;
+
+}
+
+.address-search {
+    min-width: 510px;
+    padding: 8px;
+    color: var(--main-color);
+    font-family: var(--font-main);
+}
+
+
+.active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color) !important;
+    padding-bottom: 10px;
+}
+
+
+.address-tab-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.address-tab-container button {
+    border: none;
+    background-color: white;
+    font-size: 0.9rem;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid rgb(230, 224, 215);
+    text-decoration: none;
+    padding-right: 5vh;
+    padding-left: 5vh;
+}
+
+.address-tab-container button::after {
+    content: "";
+    transition: margin-left 2s;
+}
+
+.address-tab-container button:hover {
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+
+    #content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 20px;
+        height: auto;
+        white-space: normal;
+    }
+
+    .main-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .banner-container {
+        grid-area: auto;
+        width: 100%;
+    }
+
+    .food-banner {
+        min-width: 100%;
+        height: auto;
+    }
+
+    .main-heading-container {
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .order-pickup-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #content h1 {
+        font-size: 40px;
+    }
+
+    #content p {
+        font-size: 1.2rem;
+    }
+
+    .navbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .logo-home {
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    #content h1 {
+        font-size: 32px;
+    }
+
+    .order-pickup-btn {
+        max-width: 250px;
+        font-size: 16px;
+    }
+
+    .food-banner {
+        max-width: 100%;
+    }
 }
